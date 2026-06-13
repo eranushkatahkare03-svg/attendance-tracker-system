@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance System</h1>
+        <div class="role-selection">
+            <button onclick="showLogin('student')">Student Login</button>
+            <button onclick="showLogin('teacher')">Teacher Login</button>
+        </div>
+        
+        <div id="student-login" class="login-form hidden">
+            <h3>Student Login</h3>
+            <input type="text" id="student-class" placeholder="Enter Class Name (e.g., CSE-A)">
+            <input type="text" id="student-roll" placeholder="Enter Roll No (e.g., 123)">
+            <button onclick="login('student')" id="student-login">Login</button>
+        </div>
+        
+        <div id="teacher-login" class="login-form hidden">
+            <h3>Teacher Login</h3>
+            <input type="text" id="teacher-id" placeholder="Enter Teacher ID">
+            <input type="password" id="teacher-pass" placeholder="Enter Password">
+            <button onclick="login('teacher')">Login</button>
+        </div>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>

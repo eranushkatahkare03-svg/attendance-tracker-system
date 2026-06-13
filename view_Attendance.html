@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Report</title>
+    <link rel="stylesheet" href="att.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Generate Attendance Report</h2>
+        <form id="reportForm">
+            <label for="start_date">Start Date:</label>
+            <input type="date" id="start_date" name="start_date" required>
+
+            <label for="end_date">End Date:</label>
+            <input type="date" id="end_date" name="end_date" required>
+
+            <label for="subject">Select Subject:</label>
+            <select id="subject" name="subject" required>
+                <option value="">Select Subject</option>
+                <option value="PHP">PHP</option>
+                <option value="Science">Science</option>
+                <option value="English">English</option>
+            </select>
+
+            <button type="submit">Download Report</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("reportForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            let startDate = document.getElementById("start_date").value;
+            let endDate = document.getElementById("end_date").value;
+            let subject = document.getElementById("subject").value;
+
+            if (!startDate || !endDate || !subject) {
+                alert("⚠️ Please fill all fields!");
+                return;
+            }
+
+            // Redirect to PHP script for download
+            window.location.href = `generate_report.php?start=${startDate}&end=${endDate}&subject=${subject}`;
+        });
+    </script>
+</body>
+</html>

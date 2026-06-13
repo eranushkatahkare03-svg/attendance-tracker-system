@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="teacher.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2>Teacher Dashboard</h2>
+        <ul>
+            <li><a href="#" onclick="showSection('attendance-section')">Mark Attendance</a></li>
+            <li><a href="#" onclick="showSection('manage-classes')">Manage Classes</a></li>
+            <li><a href="#" onclick="showSection('manage-students')">Manage Students</a></li>
+           
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Attendance Section -->
+    <div id="attendance-section" class="dashboard-container">
+        <h2>Mark Attendance</h2>
+
+        <!-- Select Date -->
+        <label for="attendance-date">Select Date:</label>
+        <input type="date" id="attendance-date" required><br>
+
+        <!-- Select Class -->
+        <label for="class-select">Select Class:</label>
+        <select id="class-select">
+            <option>TYCM2</option>
+            <option>TYCM3</option>
+            <option>TYCM1</option>
+            <option>FYCM1</option>
+            <option>FYCM3</option>
+            <option>FYCM2</option>
+            <option>TYIF1</option>
+            <option>TYCM2</option>
+            <option>TYCM3</option>
+            <option>TYCM1</option>
+            <option>SYCM1</option>
+            <option>SYCM3</option>
+            <option>SYCM2</option>
+            <option>TYIF2</option>
+
+        </select>
+        <br>
+
+        <!-- Select Subject -->
+<label for="subject-select">Select Subject:</label>
+<select id="subject-select">
+    <option value="">Select Subject</option>  
+</select>
+<!-- <button onclick="loadClasses()">Display CLASSES </button> -->
+<button onclick="loadSubjects()">Display Subjects </button>
+<!-- Batch Selection (Only for Practical) -->
+<div id="batch-selection" style="display: none;">
+    <label>Select Batch:</label>
+    <select id="batch-select" onchange="loadSubjects()">
+        <option value="Batch-A">Batch A</option>
+        <option value="Batch-B">Batch B</option>
+        <option value="Batch-C">Batch C</option>
+    </select>
+</div>
+
+        <button onclick="loadStudents()">Load Students</button>
+        <br><br>
+        <div id="select-all-container" style="display: block; margin-bottom: 10px;">
+            <div id="select-all-container" style="display: block; margin-bottom: 10px;">
+                <button id="select-all-btn" onclick="selectAll()">Select All</button>
+            </div>
+            
+        </div>
+        <div id="students-list"></div>
+        <button id="mark-attendance-btn" onclick="markAttendance()" style="display: none;">Mark Attendance</button>
+        <button onclick="create_exl()">EXPORT ATTENDANCE</button>
+    <button id="defaulter">Export Defaulter List</button> 
+    <button id="send_mail">Send Mail To Parents</button>
+    </div>
+    
+
+
+    <!-- Manage Classes Section -->
+    <div id="manage-classes" class="dashboard-container" style="display: none;">
+        <h2>Manage Classes</h2>
+        <input type="text" id="new-class-name" placeholder="Enter Class Name">
+        <button onclick="addClass()">Add Class</button>
+       
+
+        <h3>Add Subjects for Class</h3>
+<input type="text" id="class-name" placeholder="Enter Class Name">
+<input type="text" id="subjects" placeholder="Enter subjects (comma-separated)">
+<button onclick="addSubjects()">Add Subjects</button>
+
+<div id="message"></div>
+
+<select id="delete-class-select"></select>
+<button onclick="deleteClass()">Delete Class</button>
+
+    </div>
+
+    <!-- Manage Students Section -->
+    <div id="manage-students" class="dashboard-container" style="display: none;">
+        <h2>Manage Students</h2>
+        <label for="student-class-select">Select Class:</label>
+        <select id="student-class-select">
+            <option>TYCM2</option>
+            <option>TYCM3</option>
+            <option>TYCM1</option>
+            <option>FYCM1</option>
+            <option>FYCM3</option>
+            <option>FYCM2</option>
+            <option>TYIF1</option>
+            <option>TYCM2</option>
+            <option>TYCM3</option>
+            <option>TYCM1</option>
+            <option>SYCM1</option>
+            <option>SYCM3</option>
+            <option>SYCM2</option>
+            <option>TYIF2</option>
+        </select>
+
+        <input type="text" id="student-name" placeholder="Enter Student Name">
+        <input type="text" id="student-roll" placeholder="Enter Roll No">
+        <input type="text" id="batch" name="batch" placeholder="Enter batch" required> <!-- New batch field -->
+        <input type="text" id="parent-email" name="parent-email" placeholder="Enter Parent's Email" required>
+        <button onclick="addStudent()">Add Student</button>
+
+        <label for="delete-student-select">Select Student to Delete:</label>
+        <select id="delete-student-select"></select>
+        <button onclick="deleteStudent()">Delete Student</button>
+
+        <h3>Update Student</h3>
+        <input type="text" id="update-student-roll" placeholder="Enter Roll No">
+        <input type="text" id="update-student-name" placeholder="New Name">
+        <button onclick="updateStudent()">Update Student</button>
+    </div>
+
+    <script src="teacher.js"></script>
+    <script src="defaulter.js"></script>
+    <script src="mail.js"></script>
+</body>
+</html>
